@@ -4,8 +4,16 @@ function greetReader(){
 
 
 function getUserNamesByIds(ids, users){
-    // your code here
-    return []
+
+    const userPresentInArray = ids.filter(id => {
+       return users.find(user => user.id === id) !== undefined
+    }).map(id => {
+       return users.find(user => user.id === id).name
+    })
+
+
+    return userPresentInArray
+
 }
 
 function getExperiencedUserNamesByIds(ids, users, olderThanAge){
