@@ -29,7 +29,7 @@ function oldestSoFar(people) {
             return acc
         } return cur
     })
-
+    
     // return people.reduce((acc, cur) => 
     // (acc.age > cur.age) ? acc : cur)
       
