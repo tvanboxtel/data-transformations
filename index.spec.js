@@ -2,7 +2,8 @@
 const { 
     greetReader,
     getUserNamesByIds,
-    getExperiencedUserNamesByIds
+    getExperiencedUserNamesByIds,
+    oldestSoFar
 } = require('./index')
 
 
@@ -16,6 +17,16 @@ const users = [
     { id: 38, name: 'Arien', age: 36 },
 ]
 
+const people = [
+    {name: 'Don', age: 23},
+    {name: 'Adam', age: 33},
+    {name: 'Steve', age: 14},
+    {name: 'Rachel', age: 56},
+    {name: 'Maud', age: 46},
+    {name: 'Hermien', age: 28}
+]
+
+
 //tests
 test('Test if greeting works', () => {
     const greet = greetReader()
@@ -28,11 +39,14 @@ test('Get usernames by ids', () => {
     expect(names).toEqual(['Semih', 'Laitin', 'Arien'])
 })
 
-// test('Get experienced usernames by ids', () => {
-//     const ids = [1, 2, 7, 18, 23]
-//     const names = getExperiencedUserNamesByIds(ids, users, 30)
-//     expect(names).toEqual(['Hans', 'Barbara', 'Bob', 'Lee', 'Teun'])
-// })
+test('Get experienced usernames by ids', () => {
+    const ids = [1, 2, 7, 38, 42]
+    const names = getExperiencedUserNamesByIds(ids, users, 21)
+    expect(names).toEqual(['Laitin', 'Arien'])
+})
 
 
-// test('')
+test.only('Oldest person of people', () => {
+    const oldPerson = oldestSoFar(people)
+    expect(oldPerson).toEqual({name: 'Rachel', age: 56})
+})
